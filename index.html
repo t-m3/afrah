@@ -302,6 +302,7 @@
             align-items: center;
             gap: 10px;
             transition: background 0.2s ease;
+            cursor: pointer;
         }
         
         .dropdown-item:last-child {
@@ -522,6 +523,7 @@
             gap: 10px;
             transition: background 0.2s ease;
             font-size: 0.9rem;
+            cursor: pointer;
         }
         
         .initiative-item:last-child {
@@ -553,6 +555,184 @@
         
         .initiatives-toggle.active i {
             transform: rotate(180deg);
+        }
+
+        /* القائمة المنسدلة للمسابقات المنهجية */
+        .competitions-dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background-color: #f8f9fa;
+        }
+        
+        .competitions-dropdown.active {
+            max-height: 200px;
+        }
+        
+        .competition-item {
+            padding: 12px 18px 12px 40px;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.2s ease;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        
+        .competition-item:last-child {
+            border-bottom: none;
+        }
+        
+        .competition-item:hover {
+            background: #e9ecef;
+        }
+        
+        .competition-item i {
+            font-size: 0.9rem;
+            width: 20px;
+            text-align: center;
+            color: var(--practices);
+        }
+
+        /* أنماط خاصة للعناصر التفاعلية */
+        .electronic-magazine {
+            background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .electronic-magazine::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
+            z-index: 0;
+        }
+        
+        .library-competition {
+            background: linear-gradient(135deg, #6a4c93 0%, #8b6cb3 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .library-competition::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
+            z-index: 0;
+        }
+        
+        .reserve-box {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reserve-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
+            z-index: 0;
+        }
+        
+        .science-broadcast {
+            background: linear-gradient(135deg, #17a2b8 0%, #6f42c1 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .science-broadcast::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
+            z-index: 0;
+        }
+        
+        .reader-pulse {
+            background: linear-gradient(135deg, #e83e8c 0%, #fd7e14 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reader-pulse::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
+            z-index: 0;
+        }
+        
+        .reading-club {
+            background: linear-gradient(135deg, #6610f2 0%, #6f42c1 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reading-club::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
+            z-index: 0;
+        }
+        
+        .national-identity {
+            background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .national-identity::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
+            z-index: 0;
+        }
+        
+        /* نمط عام للعناصر التفاعلية */
+        .interactive-item i {
+            color: white !important;
+            z-index: 1;
+            position: relative;
+        }
+        
+        .interactive-item span {
+            z-index: 1;
+            position: relative;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -624,15 +804,15 @@
                                 <i class="fas fa-check-circle"></i>
                                 <span>المصحح الصغير</span>
                             </div>
-                            <div class="initiative-item">
+                            <div class="initiative-item reading-club interactive-item" onclick="openReadingClub()">
                                 <i class="fas fa-book"></i>
                                 <span>نادي القراءة</span>
                             </div>
-                            <div class="initiative-item">
+                            <div class="initiative-item reader-pulse interactive-item" onclick="openReaderPulse()">
                                 <i class="fas fa-heartbeat"></i>
                                 <span>نبض القارئ</span>
                             </div>
-                            <div class="initiative-item">
+                            <div class="initiative-item electronic-magazine interactive-item" onclick="openMagazine()">
                                 <i class="fas fa-newspaper"></i>
                                 <span>المجلة الإلكترونية</span>
                             </div>
@@ -648,14 +828,25 @@
                                 <i class="fas fa-hands-helping"></i>
                                 <span>نحو رقي مجتمعي</span>
                             </div>
-                            <div class="initiative-item">
+                            <div class="initiative-item reserve-box interactive-item" onclick="openReserveBox()">
                                 <i class="fas fa-box"></i>
                                 <span>صناديق الاحتياط</span>
                             </div>
                         </div>
-                        <div class="dropdown-item highlight">
+                        <div class="dropdown-item highlight competitions-toggle">
                             <i class="fas fa-trophy"></i>
                             <span>المسابقات المنهجية</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="competitions-dropdown">
+                            <div class="competition-item">
+                                <i class="fas fa-times-circle"></i>
+                                <span>أولمبياد جدول الضرب</span>
+                            </div>
+                            <div class="competition-item library-competition interactive-item" onclick="openLibraryCompetition()">
+                                <i class="fas fa-book"></i>
+                                <span>مسابقة أفضل مكتبة مصغرة</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -699,9 +890,9 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="dropdown-content">
-                        <div class="dropdown-item highlight">
+                        <div class="dropdown-item highlight science-broadcast interactive-item" onclick="openScienceBroadcast()">
                             <i class="fas fa-broadcast-tower"></i>
-                            <span>إذاعة بمناسبة يوم المرأة العمانية</span>
+                            <span>إذاعة بمناسبة يوم العلوم</span>
                         </div>
                         <div class="dropdown-item highlight">
                             <i class="fas fa-flag"></i>
@@ -723,7 +914,7 @@
                             <i class="fas fa-mosque"></i>
                             <span>أهلا رمضان</span>
                         </div>
-                        <div class="dropdown-item highlight">
+                        <div class="dropdown-item highlight national-identity interactive-item" onclick="openNationalIdentity()">
                             <i class="fas fa-landmark"></i>
                             <span>نحن الوطن والهوية عنواننا</span>
                         </div>
@@ -827,6 +1018,16 @@
             });
         });
 
+        // تفعيل القائمة المنسدلة للمسابقات المنهجية
+        document.querySelectorAll('.competitions-toggle').forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation(); // منع تنفيذ الحدث على العناصر الأصل
+                const dropdown = toggle.nextElementSibling;
+                dropdown.classList.toggle('active');
+                toggle.classList.toggle('active');
+            });
+        });
+
         // تأثيرات إضافية عند التمرير
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
@@ -847,6 +1048,61 @@
         // تفعيل جميع القوائم المنسدلة تلقائياً
         document.querySelectorAll('.dropdown').forEach(dropdown => {
             dropdown.classList.add('active');
+        });
+
+        // فتح المجلة الإلكترونية
+        function openMagazine() {
+            const magazineUrl = 'https://heyzine.com/flip-book/f3559a0d39.html';
+            window.open(magazineUrl, '_blank', 'width=1200,height=800,scrollbars=yes,resizable=yes');
+        }
+
+        // فتح مسابقة المكتبة المصغرة
+        function openLibraryCompetition() {
+            const libraryCompetitionUrl = 'https://b.top4top.io/m_35745rw560.mov';
+            window.open(libraryCompetitionUrl, '_blank', 'width=1000,height=700,scrollbars=yes,resizable=yes');
+        }
+
+        // فتح الصندوق الاحتياطي
+        function openReserveBox() {
+            const reserveBoxUrl = 'https://a.top4top.io/m_3574t8koi0.mov';
+            window.open(reserveBoxUrl, '_blank', 'width=1000,height=700,scrollbars=yes,resizable=yes');
+        }
+
+        // فتح إذاعة يوم العلوم
+        function openScienceBroadcast() {
+            const scienceBroadcastUrl = 'https://f.top4top.io/m_3574zr34v0.mp4';
+            window.open(scienceBroadcastUrl, '_blank', 'width=1000,height=700,scrollbars=yes,resizable=yes');
+        }
+
+        // فتح مشروع نبض القارئ
+        function openReaderPulse() {
+            const readerPulseUrl = 'https://i.top4top.io/m_3574f05mf0.mp4';
+            window.open(readerPulseUrl, '_blank', 'width=1000,height=700,scrollbars=yes,resizable=yes');
+        }
+
+        // فتح نادي القراءة
+        function openReadingClub() {
+            const readingClubUrl = 'https://h.top4top.io/m_3574j3urw0.mov';
+            window.open(readingClubUrl, '_blank', 'width=1000,height=700,scrollbars=yes,resizable=yes');
+        }
+
+        // فتح نحن الوطن والهوية عنواننا
+        function openNationalIdentity() {
+            const nationalIdentityUrl = 'https://i.top4top.io/m_3574zpiah0.mp4';
+            window.open(nationalIdentityUrl, '_blank', 'width=1000,height=700,scrollbars=yes,resizable=yes');
+        }
+
+        // إضافة تأثير عند النقر على العناصر التفاعلية
+        document.addEventListener('DOMContentLoaded', function() {
+            const interactiveItems = document.querySelectorAll('.interactive-item');
+            interactiveItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            });
         });
     </script>
 </body>
