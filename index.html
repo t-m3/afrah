@@ -33,6 +33,7 @@
             line-height: 1.6;
             min-height: 100vh;
             padding-bottom: 20px;
+            overflow-x: hidden;
         }
         
         .container {
@@ -49,36 +50,167 @@
             border-radius: 0 0 20px 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* رموز الرياضيات المتحركة في الخلفية العلوية */
+        .floating-math-symbols {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .math-symbol {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 1.8rem;
+            font-weight: bold;
+            animation: floatSymbol 20s linear infinite;
+        }
+        
+        @keyframes floatSymbol {
+            0% {
+                transform: translateY(-100px) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(100vh) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* العبارة التحفيزية أسفل العنوان */
+        .motivational-quote {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+            z-index: 2;
+        }
+        
+        .quote-text {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 25px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: bold;
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            }
         }
         
         .header-content {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            gap: 15px;
+        }
+        
+        /* إطار العنوان الجديد */
+        .title-frame {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 25px 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+        
+        .title-frame::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                rgba(255,255,255,0.8) 0%, 
+                rgba(255,255,255,0.2) 50%, 
+                rgba(255,255,255,0.8) 100%);
+            z-index: -1;
+            border-radius: 20px;
+            opacity: 0.3;
+        }
+        
+        .title-frame:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
         }
         
         .logo {
             display: flex;
+            flex-direction: column;
             align-items: center;
             gap: 15px;
         }
         
         .logo i {
-            font-size: 2.2rem;
+            font-size: 3rem;
             background: rgba(255, 255, 255, 0.2);
-            padding: 12px;
+            padding: 15px;
             border-radius: 50%;
+            margin-bottom: 10px;
         }
         
         .logo-text h1 {
-            font-size: 1.6rem;
-            margin-bottom: 5px;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
         
         .logo-text p {
             opacity: 0.9;
-            font-size: 0.95rem;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        /* السنة الجديدة */
+        .year-badge {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            margin-top: 10px;
+            padding: 5px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
         /* التخطيط الأفقي للقوائم المنسدلة */
@@ -277,17 +409,32 @@
                 width: 100%;
                 max-width: 500px;
             }
+            
+            .quote-text {
+                font-size: 1.1rem;
+                padding: 10px 20px;
+            }
         }
         
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-            
             .container {
                 padding: 15px;
+            }
+            
+            .title-frame {
+                padding: 20px 30px;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.8rem;
+            }
+            
+            .logo-text p {
+                font-size: 1rem;
+            }
+            
+            .year-badge {
+                font-size: 1.5rem;
             }
             
             .dropdown-header {
@@ -301,22 +448,42 @@
             .dropdown-item {
                 padding: 12px 15px;
             }
+            
+            .math-symbol {
+                font-size: 1.5rem;
+            }
+            
+            .quote-text {
+                font-size: 1rem;
+                padding: 8px 16px;
+            }
         }
 
         @media (max-width: 480px) {
-            .logo {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
+            .title-frame {
+                padding: 15px 20px;
             }
             
             .logo i {
-                font-size: 1.8rem;
-                padding: 10px;
+                font-size: 2.5rem;
+                padding: 12px;
             }
             
             .logo-text h1 {
-                font-size: 1.4rem;
+                font-size: 1.5rem;
+            }
+            
+            .year-badge {
+                font-size: 1.3rem;
+            }
+            
+            .math-symbol {
+                font-size: 1.2rem;
+            }
+            
+            .quote-text {
+                font-size: 0.9rem;
+                padding: 6px 12px;
             }
         }
 
@@ -334,22 +501,85 @@
             justify-content: center;
             gap: 10px;
         }
+
+        /* القائمة المنسدلة للمبادرات التربوية */
+        .initiatives-dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background-color: #f8f9fa;
+        }
+        
+        .initiatives-dropdown.active {
+            max-height: 500px;
+        }
+        
+        .initiative-item {
+            padding: 12px 18px 12px 40px;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.2s ease;
+            font-size: 0.9rem;
+        }
+        
+        .initiative-item:last-child {
+            border-bottom: none;
+        }
+        
+        .initiative-item:hover {
+            background: #e9ecef;
+        }
+        
+        .initiative-item i {
+            font-size: 0.9rem;
+            width: 20px;
+            text-align: center;
+            color: var(--practices);
+        }
+        
+        .initiatives-toggle {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-right: 10px;
+        }
+        
+        .initiatives-toggle i {
+            transition: transform 0.3s ease;
+        }
+        
+        .initiatives-toggle.active i {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body>
     <!-- الهيدر -->
     <header>
+        <!-- الرموز الرياضية المتحركة في الخلفية -->
+        <div class="floating-math-symbols" id="floatingSymbols"></div>
+        
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-book-open"></i>
-                    <div class="logo-text">
-                        <h1>ملف الإنجاز المهني</h1>
-                        <p>من إعداد المعلمة / أفراح الوهيبي</p>
+                <div class="title-frame">
+                    <div class="logo">
+                        <i class="fas fa-book-open"></i>
+                        <div class="logo-text">
+                            <h1>ملف الإنجاز المهني</h1>
+                            <p>من إعداد المعلمة / أفراح الوهيبي</p>
+                            <div class="year-badge">2025</div>
+                        </div>
                     </div>
                 </div>
-                <div class="header-badge">
-                    <span class="badge">نسخة 2024</span>
+                
+                <!-- العبارة التحفيزية أسفل العنوان -->
+                <div class="motivational-quote">
+                    <div class="quote-text">
+                        <i class="fas fa-star"></i> النجاح هو مجموع الجهود الصغيرة المتكررة يومياً <i class="fas fa-star"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -372,9 +602,56 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="dropdown-content">
-                        <div class="dropdown-item highlight">
+                        <div class="dropdown-item highlight initiatives-toggle">
                             <i class="fas fa-lightbulb"></i>
                             <span>المبادرات المدرسية</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="initiatives-dropdown">
+                            <div class="initiative-item">
+                                <i class="fas fa-calculator"></i>
+                                <span>عبقريو الرياضيات</span>
+                            </div>
+                            <div class="initiative-item">
+                                <i class="fas fa-star"></i>
+                                <span>أنت كفو</span>
+                            </div>
+                            <div class="initiative-item">
+                                <i class="fas fa-star-of-david"></i>
+                                <span>نجمة الرياضيات</span>
+                            </div>
+                            <div class="initiative-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>المصحح الصغير</span>
+                            </div>
+                            <div class="initiative-item">
+                                <i class="fas fa-book"></i>
+                                <span>نادي القراءة</span>
+                            </div>
+                            <div class="initiative-item">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>نبض القارئ</span>
+                            </div>
+                            <div class="initiative-item">
+                                <i class="fas fa-newspaper"></i>
+                                <span>المجلة الإلكترونية</span>
+                            </div>
+                            <div class="initiative-item">
+                                <i class="fas fa-shoe-prints"></i>
+                                <span>خطواتك محسوبة</span>
+                            </div>
+                            <div class="initiative-item">
+                                <i class="fas fa-brain"></i>
+                                <span>عقول مبدعة</span>
+                            </div>
+                            <div class="initiative-item">
+                                <i class="fas fa-hands-helping"></i>
+                                <span>نحو رقي مجتمعي</span>
+                            </div>
+                            <div class="initiative-item">
+                                <i class="fas fa-box"></i>
+                                <span>صناديق الاحتياط</span>
+                            </div>
                         </div>
                         <div class="dropdown-item highlight">
                             <i class="fas fa-trophy"></i>
@@ -503,17 +780,50 @@
                     <a href="#"><i class="fab fa-linkedin"></i></a>
                     <a href="#"><i class="fas fa-envelope"></i></a>
                 </div>
-                <p>جميع الحقوق محفوظة &copy; 2024</p>
+                <p>جميع الحقوق محفوظة &copy; 2025</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // إنشاء الرموز الرياضية المتحركة في الخلفية
+        function createFloatingSymbols() {
+            const symbolsContainer = document.getElementById('floatingSymbols');
+            const symbols = ['∫', '∑', 'π', '∞', '√', 'Δ', 'θ', '∂', 'α', 'β', 'γ', 'λ', 'μ', 'σ', 'ω', 'φ', 'ψ', '∝', '≈', '≠', '≤', '≥', '±', '×', '÷', '∴', '∵', '∠', '⊥', '∥'];
+            
+            for (let i = 0; i < 25; i++) {
+                const symbol = document.createElement('div');
+                symbol.className = 'math-symbol';
+                symbol.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                
+                // توزيع عشوائي للرموز في الخلفية العلوية
+                const left = Math.random() * 100;
+                const delay = Math.random() * 20;
+                const duration = 20 + Math.random() * 10;
+                
+                symbol.style.left = `${left}%`;
+                symbol.style.animationDelay = `${delay}s`;
+                symbol.style.animationDuration = `${duration}s`;
+                
+                symbolsContainer.appendChild(symbol);
+            }
+        }
+        
         // تفعيل القوائم المنسدلة
         document.querySelectorAll('.dropdown-header').forEach(header => {
             header.addEventListener('click', () => {
                 const dropdown = header.parentElement;
                 dropdown.classList.toggle('active');
+            });
+        });
+
+        // تفعيل القائمة المنسدلة للمبادرات التربوية
+        document.querySelectorAll('.initiatives-toggle').forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation(); // منع تنفيذ الحدث على العناصر الأصل
+                const dropdown = toggle.nextElementSibling;
+                dropdown.classList.toggle('active');
+                toggle.classList.toggle('active');
             });
         });
 
@@ -527,8 +837,11 @@
         // رسالة ترحيب
         window.addEventListener('load', () => {
             setTimeout(() => {
-                alert('مرحباً بكم في منصة ملف إنجاز المعلمة أفراح الوهيبي');
+                alert('مرحباً بكم في منصة ملف إنجاز المعلمة أفراح الوهيبي 2025');
             }, 1000);
+            
+            // إنشاء الرموز المتحركة بعد تحميل الصفحة
+            createFloatingSymbols();
         });
 
         // تفعيل جميع القوائم المنسدلة تلقائياً
