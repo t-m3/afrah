@@ -52,6 +52,7 @@
             margin-bottom: 30px;
             position: relative;
             overflow: hidden;
+            z-index: 10;
         }
         
         /* رموز الرياضيات المتحركة في الخلفية العلوية */
@@ -220,6 +221,8 @@
             margin: 30px 0;
             flex-wrap: wrap;
             justify-content: center;
+            position: relative;
+            z-index: 5;
         }
         
         .dropdown-column {
@@ -235,6 +238,8 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             margin-bottom: 20px;
+            position: relative;
+            z-index: 5;
         }
         
         .dropdown:hover {
@@ -285,10 +290,12 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease;
+            position: relative;
+            z-index: 6;
         }
         
         .dropdown.active .dropdown-content {
-            max-height: 600px;
+            max-height: 800px;
         }
         
         .dropdown.active .dropdown-header i {
@@ -303,6 +310,8 @@
             gap: 10px;
             transition: background 0.2s ease;
             cursor: pointer;
+            position: relative;
+            z-index: 6;
         }
         
         .dropdown-item:last-child {
@@ -512,11 +521,11 @@
         }
         
         .initiatives-dropdown.active {
-            max-height: 500px;
+            max-height: 600px;
         }
         
         .initiative-item {
-            padding: 12px 18px 12px 40px;
+            padding: 14px 18px 14px 40px;
             border-bottom: 1px solid #e9ecef;
             display: flex;
             align-items: center;
@@ -524,6 +533,7 @@
             transition: background 0.2s ease;
             font-size: 0.9rem;
             cursor: pointer;
+            min-height: 55px;
         }
         
         .initiative-item:last-child {
@@ -566,11 +576,11 @@
         }
         
         .competitions-dropdown.active {
-            max-height: 200px;
+            max-height: 150px;
         }
         
         .competition-item {
-            padding: 12px 18px 12px 40px;
+            padding: 14px 18px 14px 40px;
             border-bottom: 1px solid #e9ecef;
             display: flex;
             align-items: center;
@@ -578,6 +588,7 @@
             transition: background 0.2s ease;
             font-size: 0.9rem;
             cursor: pointer;
+            min-height: 55px;
         }
         
         .competition-item:last-child {
@@ -595,144 +606,75 @@
             color: var(--practices);
         }
 
-        /* أنماط خاصة للعناصر التفاعلية */
-        .electronic-magazine {
-            background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%);
-            color: white;
+        /* أيقونة الفيديو للعناصر المرتبطة بفيديو */
+        .video-item {
             position: relative;
-            overflow: hidden;
         }
         
-        .electronic-magazine::before {
-            content: '';
+        .video-icon {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
-            z-index: 0;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ff4444;
+            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
-        
-        .library-competition {
-            background: linear-gradient(135deg, #6a4c93 0%, #8b6cb3 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .library-competition::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
-            z-index: 0;
-        }
-        
+
+        /* إصلاح مشكلة الصندوق الاحتياطي */
         .reserve-box {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            color: white;
+            background: white;
+            color: var(--dark);
             position: relative;
-            overflow: hidden;
+            overflow: visible !important;
+            padding: 16px 18px !important;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            line-height: 1.4;
+            z-index: 7;
         }
         
-        .reserve-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
-            z-index: 0;
-        }
-        
-        .science-broadcast {
-            background: linear-gradient(135deg, #17a2b8 0%, #6f42c1 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .science-broadcast::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
-            z-index: 0;
-        }
-        
-        .reader-pulse {
-            background: linear-gradient(135deg, #e83e8c 0%, #fd7e14 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .reader-pulse::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
-            z-index: 0;
+        .math-genius {
+            background: white;
+            color: var(--dark);
         }
         
         .reading-club {
-            background: linear-gradient(135deg, #6610f2 0%, #6f42c1 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
+            background: white;
+            color: var(--dark);
         }
         
-        .reading-club::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
-            z-index: 0;
+        .reader-pulse {
+            background: white;
+            color: var(--dark);
+        }
+        
+        .electronic-magazine {
+            background: white;
+            color: var(--dark);
+        }
+        
+        .library-competition {
+            background: white;
+            color: var(--dark);
+        }
+        
+        .science-broadcast {
+            background: white;
+            color: var(--dark);
         }
         
         .national-identity {
-            background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .national-identity::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
-            z-index: 0;
-        }
-        
-        /* نمط عام للعناصر التفاعلية */
-        .interactive-item i {
-            color: white !important;
-            z-index: 1;
-            position: relative;
-        }
-        
-        .interactive-item span {
-            z-index: 1;
-            position: relative;
-            font-weight: bold;
+            background: white;
+            color: var(--dark);
         }
     </style>
 </head>
@@ -787,10 +729,13 @@
                             <span>المبادرات المدرسية</span>
                             <i class="fas fa-chevron-down"></i>
                         </div>
-                        <div class="initiatives-dropdown">
-                            <div class="initiative-item">
+                        <div class="initiatives-dropdown active">
+                            <div class="initiative-item math-genius video-item interactive-item" onclick="openMathGenius()">
                                 <i class="fas fa-calculator"></i>
-                                <span>عبقريو الرياضيات</span>
+                                <span>عبقرينو الرياضيات</span>
+                                <div class="video-icon">
+                                    <i class="fas fa-video"></i>
+                                </div>
                             </div>
                             <div class="initiative-item">
                                 <i class="fas fa-star"></i>
@@ -804,17 +749,26 @@
                                 <i class="fas fa-check-circle"></i>
                                 <span>المصحح الصغير</span>
                             </div>
-                            <div class="initiative-item reading-club interactive-item" onclick="openReadingClub()">
+                            <div class="initiative-item reading-club video-item interactive-item" onclick="openReadingClub()">
                                 <i class="fas fa-book"></i>
                                 <span>نادي القراءة</span>
+                                <div class="video-icon">
+                                    <i class="fas fa-video"></i>
+                                </div>
                             </div>
-                            <div class="initiative-item reader-pulse interactive-item" onclick="openReaderPulse()">
+                            <div class="initiative-item reader-pulse video-item interactive-item" onclick="openReaderPulse()">
                                 <i class="fas fa-heartbeat"></i>
                                 <span>نبض القارئ</span>
+                                <div class="video-icon">
+                                    <i class="fas fa-video"></i>
+                                </div>
                             </div>
-                            <div class="initiative-item electronic-magazine interactive-item" onclick="openMagazine()">
+                            <div class="initiative-item electronic-magazine video-item interactive-item" onclick="openMagazine()">
                                 <i class="fas fa-newspaper"></i>
                                 <span>المجلة الإلكترونية</span>
+                                <div class="video-icon">
+                                    <i class="fas fa-video"></i>
+                                </div>
                             </div>
                             <div class="initiative-item">
                                 <i class="fas fa-shoe-prints"></i>
@@ -828,9 +782,12 @@
                                 <i class="fas fa-hands-helping"></i>
                                 <span>نحو رقي مجتمعي</span>
                             </div>
-                            <div class="initiative-item reserve-box interactive-item" onclick="openReserveBox()">
+                            <div class="initiative-item reserve-box video-item interactive-item" onclick="openReserveBox()">
                                 <i class="fas fa-box"></i>
                                 <span>صناديق الاحتياط</span>
+                                <div class="video-icon">
+                                    <i class="fas fa-video"></i>
+                                </div>
                             </div>
                         </div>
                         <div class="dropdown-item highlight competitions-toggle">
@@ -838,14 +795,17 @@
                             <span>المسابقات المنهجية</span>
                             <i class="fas fa-chevron-down"></i>
                         </div>
-                        <div class="competitions-dropdown">
+                        <div class="competitions-dropdown active">
                             <div class="competition-item">
                                 <i class="fas fa-times-circle"></i>
                                 <span>أولمبياد جدول الضرب</span>
                             </div>
-                            <div class="competition-item library-competition interactive-item" onclick="openLibraryCompetition()">
+                            <div class="competition-item library-competition video-item interactive-item" onclick="openLibraryCompetition()">
                                 <i class="fas fa-book"></i>
                                 <span>مسابقة أفضل مكتبة مصغرة</span>
+                                <div class="video-icon">
+                                    <i class="fas fa-video"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -890,9 +850,12 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="dropdown-content">
-                        <div class="dropdown-item highlight science-broadcast interactive-item" onclick="openScienceBroadcast()">
+                        <div class="dropdown-item highlight science-broadcast video-item interactive-item" onclick="openScienceBroadcast()">
                             <i class="fas fa-broadcast-tower"></i>
                             <span>إذاعة بمناسبة يوم العلوم</span>
+                            <div class="video-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
                         </div>
                         <div class="dropdown-item highlight">
                             <i class="fas fa-flag"></i>
@@ -914,9 +877,12 @@
                             <i class="fas fa-mosque"></i>
                             <span>أهلا رمضان</span>
                         </div>
-                        <div class="dropdown-item highlight national-identity interactive-item" onclick="openNationalIdentity()">
+                        <div class="dropdown-item highlight national-identity video-item interactive-item" onclick="openNationalIdentity()">
                             <i class="fas fa-landmark"></i>
                             <span>نحن الوطن والهوية عنواننا</span>
+                            <div class="video-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
                         </div>
                         <div class="dropdown-item highlight">
                             <i class="fas fa-book-reader"></i>
@@ -987,7 +953,6 @@
                 symbol.className = 'math-symbol';
                 symbol.textContent = symbols[Math.floor(Math.random() * symbols.length)];
                 
-                // توزيع عشوائي للرموز في الخلفية العلوية
                 const left = Math.random() * 100;
                 const delay = Math.random() * 20;
                 const duration = 20 + Math.random() * 10;
@@ -1011,7 +976,7 @@
         // تفعيل القائمة المنسدلة للمبادرات التربوية
         document.querySelectorAll('.initiatives-toggle').forEach(toggle => {
             toggle.addEventListener('click', (e) => {
-                e.stopPropagation(); // منع تنفيذ الحدث على العناصر الأصل
+                e.stopPropagation();
                 const dropdown = toggle.nextElementSibling;
                 dropdown.classList.toggle('active');
                 toggle.classList.toggle('active');
@@ -1021,18 +986,11 @@
         // تفعيل القائمة المنسدلة للمسابقات المنهجية
         document.querySelectorAll('.competitions-toggle').forEach(toggle => {
             toggle.addEventListener('click', (e) => {
-                e.stopPropagation(); // منع تنفيذ الحدث على العناصر الأصل
+                e.stopPropagation();
                 const dropdown = toggle.nextElementSibling;
                 dropdown.classList.toggle('active');
                 toggle.classList.toggle('active');
             });
-        });
-
-        // تأثيرات إضافية عند التمرير
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('header');
-            parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
         });
 
         // رسالة ترحيب
@@ -1041,8 +999,20 @@
                 alert('مرحباً بكم في منصة ملف إنجاز المعلمة أفراح الوهيبي 2025');
             }, 1000);
             
-            // إنشاء الرموز المتحركة بعد تحميل الصفحة
             createFloatingSymbols();
+            
+            document.querySelectorAll('.initiatives-dropdown').forEach(dropdown => {
+                dropdown.classList.add('active');
+            });
+            document.querySelectorAll('.competitions-dropdown').forEach(dropdown => {
+                dropdown.classList.add('active');
+            });
+            document.querySelectorAll('.initiatives-toggle').forEach(toggle => {
+                toggle.classList.add('active');
+            });
+            document.querySelectorAll('.competitions-toggle').forEach(toggle => {
+                toggle.classList.add('active');
+            });
         });
 
         // تفعيل جميع القوائم المنسدلة تلقائياً
@@ -1090,6 +1060,12 @@
         function openNationalIdentity() {
             const nationalIdentityUrl = 'https://i.top4top.io/m_3574zpiah0.mp4';
             window.open(nationalIdentityUrl, '_blank', 'width=1000,height=700,scrollbars=yes,resizable=yes');
+        }
+
+        // فتح عبقرينو الرياضيات
+        function openMathGenius() {
+            const mathGeniusUrl = 'https://h.top4top.io/m_36003wkeg1.mp4';
+            window.open(mathGeniusUrl, '_blank', 'width=1000,height=700,scrollbars=yes,resizable=yes');
         }
 
         // إضافة تأثير عند النقر على العناصر التفاعلية
